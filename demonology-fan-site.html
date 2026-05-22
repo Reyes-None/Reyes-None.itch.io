@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demonology 🕯️ — Fan Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #090909;
+  --paper: #0e0c0a;
+  --candle: #e8a020;
+  --candle-dim: #a06010;
+  --blood: #7a0000;
+  --fog: #4a4540;
+  --bone: #c8bfaa;
+  --parchment: #0d0b09;
+  --accent: #d4943a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:0.3}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:linear-gradient(to bottom,rgba(9,9,9,0.97),transparent)}
+.nav-brand{font-family:'UnifrakturMaguntia',cursive;font-size:24px;color:var(--candle);text-shadow:0 0 20px rgba(232,160,32,0.5);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--fog);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--candle)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:120px 40px 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(232,160,32,.07) 0%,transparent 55%),radial-gradient(ellipse at 50% 100%,rgba(122,0,0,.12) 0%,transparent 50%),linear-gradient(180deg,#000 0%,#090603 60%,#060200 100%)}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(0,0,0,.85) 80%);animation:flicker 6s ease-in-out infinite}
+@keyframes flicker{0%,100%{opacity:1}45%{opacity:.92}50%{opacity:.88}55%{opacity:.95}}
+.candle-emoji{font-size:52px;margin-bottom:24px;animation:candleFlame 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(232,160,32,.6));position:relative;z-index:2}
+@keyframes candleFlame{0%,100%{transform:scale(1) rotate(-1deg)}33%{transform:scale(1.04) rotate(1.5deg)}66%{transform:scale(.97) rotate(-2deg)}}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:var(--candle-dim);margin-bottom:20px;position:relative;z-index:2;animation:fadeUp 1s ease .2s both}
+.hero-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(64px,12vw,140px);color:var(--bone);line-height:.85;letter-spacing:.04em;text-shadow:0 0 60px rgba(232,160,32,.25),0 0 120px rgba(232,160,32,.1),0 4px 40px rgba(0,0,0,.9);position:relative;z-index:2;animation:fadeUp 1s ease .4s both;margin-bottom:20px}
+.hero-sub{font-style:italic;font-size:clamp(16px,2.5vw,22px);color:var(--fog);max-width:560px;line-height:1.7;margin-bottom:40px;position:relative;z-index:2;animation:fadeUp 1s ease .6s both}
+.hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;animation:fadeUp 1s ease .8s both;margin-bottom:48px}
+.badge{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--candle-dim);border:1px solid rgba(232,160,32,.2);padding:8px 20px;background:rgba(232,160,32,.04)}
+.hero-cta{display:inline-block;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);background:var(--candle);padding:15px 40px;text-decoration:none;transition:all .3s;position:relative;z-index:2;animation:fadeUp 1s ease 1s both}
+.hero-cta:hover{background:var(--accent);box-shadow:0 0 30px rgba(232,160,32,.3)}
+.ornament{font-size:20px;color:rgba(232,160,32,.25);letter-spacing:.2em;margin:12px 0;position:relative;z-index:2}
+.scroll-line{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;animation:fadeUp 1s ease 1.2s both}
+.scroll-line span{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5em;text-transform:uppercase;color:rgba(100,90,70,.6)}
+.scroll-line-bar{width:1px;height:44px;background:linear-gradient(to bottom,rgba(232,160,32,.5),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* SECTION */
+.section{max-width:1180px;margin:0 auto;padding:100px 40px}
+.fw-section{padding:100px 0;background:var(--parchment)}
+.fw-inner{max-width:1180px;margin:0 auto;padding:0 40px}
+.sec-eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--candle-dim);margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.sec-eyebrow::before,.sec-eyebrow::after{content:'';flex:1;max-width:50px;height:1px;background:rgba(232,160,32,.2)}
+.sec-title{font-family:'UnifrakturMaguntia',cursive;font-size:clamp(32px,5vw,56px);color:var(--bone);line-height:1;margin-bottom:16px;text-shadow:0 0 40px rgba(232,160,32,.1)}
+.sec-desc{font-style:italic;font-size:18px;color:var(--fog);max-width:580px;line-height:1.8;margin-bottom:48px}
+.hr{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(232,160,32,.2),transparent)}
+
+/* REVEAL */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* TABS */
+.tabs{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:32px}
+.tab-btn{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--fog);background:rgba(255,255,255,.03);border:1px solid rgba(232,160,32,.1);padding:10px 24px;cursor:pointer;transition:all .25s}
+.tab-btn.active,.tab-btn:hover{background:rgba(232,160,32,.1);color:var(--candle);border-color:rgba(232,160,32,.3)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+/* GHOST GRID */
+.ghost-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px}
+.ghost-card{background:rgba(255,255,255,.03);border:1px solid rgba(232,160,32,.08);padding:22px 20px;transition:all .3s;position:relative;overflow:hidden}
+.ghost-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--candle);transform:scaleY(0);transform-origin:bottom;transition:transform .4s}
+.ghost-card:hover{background:rgba(232,160,32,.06);border-color:rgba(232,160,32,.2)}
+.ghost-card:hover::before{transform:scaleY(1)}
+.ghost-name{font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--bone);margin-bottom:8px;letter-spacing:.05em}
+.ghost-evidence{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.ev-pill{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--candle-dim);border:1px solid rgba(232,160,32,.2);padding:3px 8px;background:rgba(232,160,32,.04)}
+.ghost-trait{font-style:italic;font-size:13px;color:rgba(100,90,70,.8);line-height:1.5}
+.ghost-danger{position:absolute;top:12px;right:12px;font-size:9px;font-family:'Cinzel',serif;letter-spacing:.1em;padding:3px 8px}
+.danger-high{background:rgba(122,0,0,.4);color:#ff6666;border:1px solid rgba(122,0,0,.5)}
+.danger-med{background:rgba(160,96,16,.3);color:#ffaa55;border:1px solid rgba(160,96,16,.4)}
+.danger-low{background:rgba(40,60,40,.3);color:#88bb88;border:1px solid rgba(60,90,60,.4)}
+
+/* MAP GRID */
+.map-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:3px}
+.map-card{background:rgba(255,255,255,.025);border:1px solid rgba(232,160,32,.08);padding:28px 26px;transition:all .3s;position:relative;overflow:hidden}
+.map-card:hover{border-color:rgba(232,160,32,.2);background:rgba(232,160,32,.04)}
+.map-size-tag{display:inline-block;font-family:'Cinzel',serif;font-size:8px;letter-spacing:.3em;text-transform:uppercase;padding:3px 10px;margin-bottom:12px}
+.size-small{background:rgba(40,70,40,.3);color:#88bb88;border:1px solid rgba(60,90,60,.4)}
+.size-medium{background:rgba(160,96,16,.25);color:#ffaa55;border:1px solid rgba(160,96,16,.35)}
+.size-large{background:rgba(100,20,20,.3);color:#ff8888;border:1px solid rgba(120,30,30,.4)}
+.map-name{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--bone);margin-bottom:8px}
+.map-level{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--candle-dim);margin-bottom:12px}
+.map-desc{font-style:italic;font-size:15px;color:rgba(100,90,70,.8);line-height:1.65}
+.map-rooms{margin-top:14px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;color:rgba(80,70,55,.7);text-transform:uppercase}
+
+/* ITEM GRID */
+.item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:3px}
+.item-card{background:rgba(255,255,255,.025);border:1px solid rgba(232,160,32,.07);padding:22px;display:flex;gap:16px;align-items:flex-start;transition:all .3s}
+.item-card:hover{background:rgba(232,160,32,.05);border-color:rgba(232,160,32,.18)}
+.item-icon{font-size:28px;flex-shrink:0;line-height:1;margin-top:2px}
+.item-name{font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:var(--bone);margin-bottom:4px}
+.item-type{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:var(--candle-dim);margin-bottom:8px}
+.item-desc{font-style:italic;font-size:13px;color:rgba(100,90,70,.75);line-height:1.55}
+
+/* EVIDENCE */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:3px}
+.ev-card{background:rgba(232,160,32,.04);border:1px solid rgba(232,160,32,.12);padding:24px 22px;transition:border-color .3s}
+.ev-card:hover{border-color:rgba(232,160,32,.3)}
+.ev-name{font-family:'Cinzel',serif;font-size:15px;font-weight:700;color:var(--candle);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.ev-name-icon{font-size:20px}
+.ev-desc{font-style:italic;font-size:14px;color:rgba(150,130,100,.85);line-height:1.65}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:3px}
+.tip-card{background:rgba(255,255,255,.025);border:1px solid rgba(232,160,32,.08);padding:28px 26px;position:relative;overflow:hidden;transition:all .3s}
+.tip-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--candle-dim),transparent);transform:scaleX(0);transition:transform .4s}
+.tip-card:hover{border-color:rgba(232,160,32,.2)}
+.tip-card:hover::after{transform:scaleX(1)}
+.tip-num{font-family:'UnifrakturMaguntia',cursive;font-size:48px;color:rgba(232,160,32,.1);position:absolute;top:12px;right:16px;line-height:1}
+.tip-category{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--candle-dim);margin-bottom:12px}
+.tip-title{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--bone);margin-bottom:10px;line-height:1.4}
+.tip-body{font-style:italic;font-size:15px;color:rgba(120,108,88,.9);line-height:1.7}
+
+/* LORE */
+.lore-body{max-width:740px;margin:0 auto}
+.lore-block{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(232,160,32,.1)}
+.lore-block:last-child{border-bottom:none}
+.lore-heading{font-family:'UnifrakturMaguntia',cursive;font-size:28px;color:var(--candle);margin-bottom:16px;text-shadow:0 0 20px rgba(232,160,32,.2)}
+.lore-text{font-size:17px;line-height:1.9;color:rgba(180,165,140,.9);font-style:italic}
+.lore-text+.lore-text{margin-top:16px}
+.lore-quote{border-left:2px solid var(--candle-dim);padding-left:20px;margin:24px 0;font-size:18px;font-style:italic;color:rgba(200,185,160,.7);line-height:1.8}
+
+/* FOOTER */
+footer{background:#000;border-top:1px solid rgba(232,160,32,.1);padding:60px 40px;text-align:center}
+.footer-logo{font-family:'UnifrakturMaguntia',cursive;font-size:36px;color:var(--candle);text-shadow:0 0 30px rgba(232,160,32,.4);margin-bottom:8px}
+.footer-tagline{font-style:italic;font-size:14px;color:rgba(80,70,55,.7);margin-bottom:28px}
+.footer-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;list-style:none;margin-bottom:32px}
+.footer-links a{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(80,70,55,.6);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:var(--candle-dim)}
+.footer-copy{font-style:italic;font-size:12px;color:rgba(60,55,45,.5)}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.section,.fw-inner{padding:70px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Demonology 🕯️</a>
+  <ul class="nav-links">
+    <li><a href="#ghosts">Ghosts</a></li>
+    <li><a href="#maps">Job Sites</a></li>
+    <li><a href="#items">Equipment</a></li>
+    <li><a href="#tips">Tips</a></li>
+    <li><a href="#lore">Lore</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="candle-emoji">🕯️</div>
+  <div class="hero-eyebrow">Blaqk Magic Blue · Roblox · Fan Guide</div>
+  <h1 class="hero-title">Demonology</h1>
+  <div class="ornament">✦ ── ✦ ── ✦</div>
+  <p class="hero-sub">A first-person paranormal investigation game. Gather evidence, identify the ghost, and escape before it hunts you down.</p>
+  <div class="hero-badges">
+    <span class="badge">🕵️ Up to 6 Players</span>
+    <span class="badge">👻 23 Ghost Types</span>
+    <span class="badge">🗺️ 11 Job Sites</span>
+    <span class="badge">⚠️ 5 Difficulty Levels</span>
+    <span class="badge">🕯️ 236M+ Visits</span>
+  </div>
+  <a href="https://www.roblox.com/games/18199615050/Demonology" class="hero-cta" target="_blank">Play on Roblox →</a>
+  <div class="scroll-line"><span>Enter</span><div class="scroll-line-bar"></div></div>
+</div>
+
+<div class="hr"></div>
+
+<!-- GHOSTS -->
+<div id="ghosts" class="fw-section">
+  <div class="fw-inner">
+    <div class="sec-eyebrow reveal">Paranormal Entities</div>
+    <h2 class="sec-title reveal">Ghost Types</h2>
+    <p class="sec-desc reveal">Each ghost leaves exactly 3 pieces of evidence. Use your journal to cross-reference and identify before overtime begins.</p>
+    <div class="tabs reveal">
+      <button class="tab-btn active" onclick="switchTab(this,'g-all')">All Ghosts</button>
+      <button class="tab-btn" onclick="switchTab(this,'g-agg')">⚠ Aggressive</button>
+      <button class="tab-btn" onclick="switchTab(this,'g-trk')">🎭 Tricky</button>
+    </div>
+
+    <div id="g-all" class="tab-panel active"><div class="ghost-grid">
+      <div class="ghost-card reveal"><div class="ghost-danger danger-low">Low</div><div class="ghost-name">Spirit</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Ghost Writing</span></div><div class="ghost-trait">The baseline ghost. No special strengths. Can turn candle flames blue. A good first guess for new investigators.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-low">Low</div><div class="ghost-name">Wraith</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">Hates salt — will never step on it. Teleports to random players and drains energy rapidly during overtime.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Ghoul</div><div class="ghost-evidence"><span class="ev-pill">Freezing</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Ghost Writing</span></div><div class="ghost-trait">Hunts instantly if asked a Spirit Box question. Turns off electronics completely instead of just malfunctioning them.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Revenant</div><div class="ghost-evidence"><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Ghost Writing</span></div><div class="ghost-trait">Hunts with very short cooldowns. However, the hunt ends immediately after it claims a victim.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Banshee</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Fixates on a single target. Hunts when that player's sanity drops. Always chases its chosen victim.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Oni</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Freezing</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">One of the fastest ghosts. Surges with sudden acceleration during chases. Drains sanity at a frightening rate.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Phantom</div><div class="ghost-evidence"><span class="ev-pill">Spirit Box</span><span class="ev-pill">Freezing</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Avoids hunting near grouped players. Has longer invisible phases while blinking — harder to loop.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Shade</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Shy around groups. Barely hunts when multiple players are together. Thrives on isolation.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Demon</div><div class="ghost-evidence"><span class="ev-pill">Handprints</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Hunts at full sanity. Can initiate immediately upon your arrival. A Cross temporarily wards it off.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Siren</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Lures hunters toward its ghost room. Sanity drains faster near it. Approaching it during a hunt is almost always fatal.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Wendigo</div><div class="ghost-evidence"><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Handprints</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">Becomes much faster when chasing a lone hunter. Never split from your party when a Wendigo is present.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Dullahan</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Blistering speed — among the fastest in the game. Know your hiding spots before this one starts hunting.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Specter</div><div class="ghost-evidence"><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Rarely triggers events. Drains sanity passively near its room even with no visible interaction.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Shadow</div><div class="ghost-evidence"><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Mostly invisible during events. Causes intense light flickering in its room without physically appearing.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Skinwalker</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Spirit Box</span></div><div class="ghost-trait">Fakes Ghost Orb evidence to mislead you. Mimics player voices. Never fully trust what you hear.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">The Wisp</div><div class="ghost-evidence"><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Handprints</span><span class="ev-pill">Ghost Writing</span></div><div class="ghost-trait">Lights candles on its own. Can only begin hunts from its ghost room — Holy Oil at the doorway stops it entirely.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-low">Low</div><div class="ghost-name">Umbra</div><div class="ghost-evidence"><span class="ev-pill">Spirit Box</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">Communicates via the Umbra Board planchette, spelling out its room name when asked the right question.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Nightmare</div><div class="ghost-evidence"><span class="ev-pill">Handprints</span><span class="ev-pill">Freezing</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">Hides one of its three evidences. May force you to identify purely by elimination. Named after the hardest mode.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Leviathan</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Freezing</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Grows more dangerous the longer the investigation runs. Gather evidence fast and leave. Never let overtime begin.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Aswang</div><div class="ghost-evidence"><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Freezing</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Moves slowly but accelerates sharply when it sees you. From Filipino folklore — a shapeshifting monster.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Dybbuk</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Becomes violently aggressive when cursed objects are used nearby. Never use the Summoning Circle without a plan.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High ⚠</div><div class="ghost-name">Entity</div><div class="ghost-evidence"><span class="ev-pill">Wither</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">The rarest and most feared. Causes environmental decay. Hunts without warning. Almost no weaknesses to exploit.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Medium</div><div class="ghost-name">Keres</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Wither</span></div><div class="ghost-trait">Named after Greek spirits of violent death. Causes decay and is slightly faster than average during hunts.</div></div>
+    </div></div>
+
+    <div id="g-agg" class="tab-panel"><div class="ghost-grid">
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Ghoul</div><div class="ghost-evidence"><span class="ev-pill">Freezing</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Ghost Writing</span></div><div class="ghost-trait">Do NOT use Spirit Box. One question triggers an immediate hunt. Rule it out through elimination if possible.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Demon</div><div class="ghost-evidence"><span class="ev-pill">Handprints</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Hunts at 100% sanity. Place Crosses near the ghost room entrance immediately. Do not delay.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Oni</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Freezing</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">Surging speed — you likely cannot outrun it. Find a closet and stay quiet. Electronic items off.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Leviathan</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Freezing</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Time is your enemy. The longer you stay, the worse it gets. Identify and leave. Period.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High ⚠</div><div class="ghost-name">Entity</div><div class="ghost-evidence"><span class="ev-pill">Wither</span><span class="ev-pill">Ghost Writing</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">No consistent warning signs before a hunt. Watch for Wither decay — that's your only early indicator.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">High</div><div class="ghost-name">Dullahan</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Among the fastest. Know every closet on the map before you start gathering evidence.</div></div>
+    </div></div>
+
+    <div id="g-trk" class="tab-panel"><div class="ghost-grid">
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">Tricky</div><div class="ghost-name">Skinwalker</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Spirit Box</span></div><div class="ghost-trait">Displays a fake Ghost Orb. Mimics teammate voices. Confirm orb evidence carefully — don't trust first impressions.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-high">Tricky</div><div class="ghost-name">Nightmare</div><div class="ghost-evidence"><span class="ev-pill">Handprints</span><span class="ev-pill">Freezing</span><span class="ev-pill">Laser Grid</span></div><div class="ghost-trait">Hides one evidence piece. Identify by process of elimination — rule out every other ghost systematically.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Tricky</div><div class="ghost-name">Dybbuk</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Spirit Box</span><span class="ev-pill">Freezing</span></div><div class="ghost-trait">Cursed objects trigger immediate hunts. The Summoning Circle is effectively off-limits. Umbra Board is high risk too.</div></div>
+      <div class="ghost-card reveal"><div class="ghost-danger danger-med">Tricky</div><div class="ghost-name">Banshee</div><div class="ghost-evidence"><span class="ev-pill">EMF 5</span><span class="ev-pill">Ghost Orb</span><span class="ev-pill">Handprints</span></div><div class="ghost-trait">Target-focused. Identify who it's after and keep that player near an exit or closet at all times.</div></div>
+    </div></div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- EVIDENCE -->
+<div class="section" id="evidence">
+  <div class="sec-eyebrow reveal">What You're Looking For</div>
+  <h2 class="sec-title reveal">Evidence Types</h2>
+  <p class="sec-desc reveal">Every ghost leaves exactly 3 of 8 possible evidence types. Find them, mark your journal, and cross-reference until one ghost remains.</p>
+  <div class="ev-grid">
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">📡</span>EMF Level 5</div><div class="ev-desc">Your EMF Reader spikes to Level 5 near ghost interactions. Place it passively in the ghost room — it collects evidence hands-free while you work on others.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">🎙️</span>Spirit Box</div><div class="ev-desc">Hold the Spirit Box in the ghost's room and ask it questions. A response in a distorted voice confirms this evidence. Never use near a Ghoul.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">❄️</span>Freezing Temps</div><div class="ev-desc">Thermometer reads below 0°C in the ghost room. This is also how you find the ghost room in the first place — scan every room on arrival.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">🔵</span>Ghost Orb</div><div class="ev-desc">Visible only through the Video Camera or Head-Mounted Camera. A floating orb drifts through the ghost room. Set Graphics to Level 1 for best visibility.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">🖐️</span>Handprints</div><div class="ev-desc">Revealed by the Blacklight (UV). Ghosts leave fingerprints and footprints on surfaces. Drop salt piles to force guaranteed footprints when the ghost walks through.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">✍️</span>Ghost Writing</div><div class="ev-desc">Place the Spirit Book on the floor near activity. Some ghosts write sinister messages in it passively. Leave it in the room and check back — don't hold it.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">🔴</span>Laser Grid</div><div class="ev-desc">Set up the Laser Projector in the ghost room. Ghosts with this evidence become faintly visible when passing through the grid. Film it with a Video Camera.</div></div>
+    <div class="ev-card reveal"><div class="ev-name"><span class="ev-name-icon">🌿</span>Wither</div><div class="ev-desc">Environmental decay — metal rusts, paintings distort, Flower Pot blooms wilt and die over time. Passive and unmistakable, but it takes time. Place the Flower Pot early.</div></div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- MAPS -->
+<div id="maps" class="fw-section">
+  <div class="fw-inner">
+    <div class="sec-eyebrow reveal">Haunted Locations</div>
+    <h2 class="sec-title reveal">Job Sites</h2>
+    <p class="sec-desc reveal">11 locations of varying size. Larger maps unlock at higher levels — more rooms to search and far more places for the ghost to corner you.</p>
+    <div class="map-grid">
+      <div class="map-card reveal"><span class="map-size-tag size-small">🏠 Small · Lvl 1</span><div class="map-name">Fenway Drive</div><div class="map-level">🔓 Unlocked from start</div><div class="map-desc">A single-story home with tight, claustrophobic rooms. Good layout for beginners and quick money farming runs. Receiving a full revamp in a future update.</div><div class="map-rooms">10 rooms · 1 closet</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-small">🏠 Small · Lvl 1</span><div class="map-name">Juniper Road</div><div class="map-level">🔓 Unlocked from start</div><div class="map-desc">The narrowest map in the game — a long, stretched layout with very few hiding spots. Popular for fast money farming but dangerous when hunts start.</div><div class="map-rooms">Narrow layout · limited closets</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-small">🏠 Small · Lvl 1</span><div class="map-name">Lincoln Street</div><div class="map-level">🔓 Unlocked from start</div><div class="map-desc">A family home where a doll may naturally spawn in the living room. Two possible fuse box spawn locations. Balanced and forgiving for new hunters.</div><div class="map-rooms">2 fuse box locations · doll spawn</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-small">🏪 Small · Lvl 1</span><div class="map-name">Bodega</div><div class="map-level">🔓 Unlocked from start</div><div class="map-desc">A small convenience store with tight aisles and shelving units creating difficult sightlines. The ghost room can be anywhere in the store. Two fuse box locations.</div><div class="map-rooms">Store layout · 2 fuse box locations</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-medium">🏡 Medium · Lvl 4</span><div class="map-name">Lilim Lane</div><div class="map-level">🔓 Unlocked at Level 4</div><div class="map-desc">The first two-story home you'll encounter. More rooms to search and more staircases to navigate — and more corners for the ghost to appear from behind.</div><div class="map-rooms">2 floors · expanded layout</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-medium">☕ Medium</span><div class="map-name">Café</div><div class="map-level">🔓 Mid-tier unlock</div><div class="map-desc">A small café and kitchen. The back-of-house is cramped and dangerous — easy to get cornered. Two fuse box locations. The kitchen is a particularly dangerous room.</div><div class="map-rooms">2 fuse box locations · kitchen danger</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-medium">🏘️ Medium · Lvl 16</span><div class="map-name">Bridgewood Drive</div><div class="map-level">🔓 Unlocked at Level 16</div><div class="map-desc">A three-story house — the most complex medium map. Three full floors of rooms, with staircases creating dangerous chokepoints during hunts.</div><div class="map-rooms">3 floors · complex layout</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-medium">🏠 Medium</span><div class="map-name">Oakbridge Estates</div><div class="map-level">🔓 Mid-tier unlock</div><div class="map-desc">A large residential estate with multiple outbuildings. The ghost room can shift during an investigation. Wide layout means more ground to cover and less time to do it.</div><div class="map-rooms">Multiple outbuildings · shifting ghost room</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-large">⛓️ Large · Lvl 8</span><div class="map-name">Prison</div><div class="map-level">🔓 Unlocked at Level 8</div><div class="map-desc">The "Inescapable Prison." Long stone hallways, rows of cells, and staff quarters. Deliberately disorienting — easy to get lost mid-hunt. Unique architectural fuse box.</div><div class="map-rooms">2 floors · cell blocks · staff areas</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-large">🏫 Large · Lvl 13</span><div class="map-name">School (BMA)</div><div class="map-level">🔓 Unlocked at Level 13</div><div class="map-desc">Black Magic Academy — technically 4 stories, only 2 accessible. Classrooms, lockers, hallways, and a gym. Many hiding spots, but the ghost is familiar with all of them.</div><div class="map-rooms">2 accessible floors · classrooms · gym</div></div>
+      <div class="map-card reveal"><span class="map-size-tag size-large">🏚️ Large · Lvl 20</span><div class="map-name">Asylum</div><div class="map-level">🔓 Unlocked at Level 20</div><div class="map-desc">The most feared location. A three-story abandoned psychiatric hospital — cluttered, vandalized, and deeply unsettling. The layout is deliberately confusing. Experts only.</div><div class="map-rooms">3 floors · psychiatric wards · isolation cells</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- EQUIPMENT -->
+<div id="items" class="section">
+  <div class="sec-eyebrow reveal">Your Arsenal</div>
+  <h2 class="sec-title reveal">Equipment</h2>
+  <p class="sec-desc reveal">Starter items are free every job. Purchasable equipment costs in-game money and may require minimum levels. Choose wisely — your carry limit is fixed.</p>
+  <div class="tabs reveal">
+    <button class="tab-btn active" onclick="switchTab(this,'eq-start')">🎒 Starter</button>
+    <button class="tab-btn" onclick="switchTab(this,'eq-ev')">🔍 Evidence</button>
+    <button class="tab-btn" onclick="switchTab(this,'eq-util')">🛡️ Utility</button>
+    <button class="tab-btn" onclick="switchTab(this,'eq-curse')">🪬 Cursed Objects</button>
+  </div>
+  <div id="eq-start" class="tab-panel active"><div class="item-grid">
+    <div class="item-card reveal"><div class="item-icon">🔦</div><div><div class="item-name">Flashlight</div><div class="item-type">Starter · Utility</div><div class="item-desc">Your basic light source. Electronic — malfunctions near a hunting ghost. Turn it off when hiding. Always carry a backup.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">📻</div><div><div class="item-name">EMF Reader</div><div class="item-type">Starter · Evidence</div><div class="item-desc">Detects electromagnetic readings 1–5. Level 5 confirms EMF evidence. Can be placed passively to collect evidence while you focus elsewhere.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🔵</div><div><div class="item-name">Blacklight (UV)</div><div class="item-type">Starter · Evidence</div><div class="item-desc">Reveals ghostly handprints, fingerprints, and footprints. Turn off room lights for best visibility. Pair with salt for reliable footprint detection.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🌡️</div><div><div class="item-name">Thermometer</div><div class="item-type">Starter · Evidence</div><div class="item-desc">Measures room temperature. Below 0°C confirms Freezing Temps. Also your primary method for locating the ghost room — scan every room first.</div></div></div>
+  </div></div>
+  <div id="eq-ev" class="tab-panel"><div class="item-grid">
+    <div class="item-card reveal"><div class="item-icon">📷</div><div><div class="item-name">Photo Camera</div><div class="item-type">Purchasable · Income</div><div class="item-desc">Photograph ghost events, interactions, and manifestations for bonus money. A clear photo of the ghost is worth significant cash. Always bring one.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">📹</div><div><div class="item-name">Video Camera</div><div class="item-type">Purchasable · Evidence</div><div class="item-desc">Detects Ghost Orbs automatically when placed in the ghost room. Records activity while you're elsewhere. Lower graphics to Level 1 to see orbs clearly.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🎙️</div><div><div class="item-name">Spirit Box</div><div class="item-type">Purchasable · Evidence</div><div class="item-desc">Ask the ghost questions aloud. A distorted voice response confirms Spirit Box evidence. Do NOT use this if you suspect a Ghoul.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">📗</div><div><div class="item-name">Spirit Book</div><div class="item-type">Purchasable · Evidence</div><div class="item-desc">Leave it on the floor in the ghost room. Ghosts with Ghost Writing evidence will write in it passively. Don't hold it — just place and check back.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🔴</div><div><div class="item-name">Laser Projector</div><div class="item-type">Purchasable · Evidence</div><div class="item-desc">Projects a laser grid that makes ghosts with Laser Grid evidence faintly visible. Film with a camera. Lower graphics dramatically improve detection.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🎥</div><div><div class="item-name">Head-Mounted Camera</div><div class="item-type">Purchasable · Evidence</div><div class="item-desc">Worn on your head — detects Ghost Orbs passively while you move and use other equipment with both hands free.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🌸</div><div><div class="item-name">Flower Pot</div><div class="item-type">Purchasable · Evidence</div><div class="item-desc">Detects Wither evidence — the flowers wilt and die if the ghost causes environmental decay. Place it early; the timer is random and can be long.</div></div></div>
+  </div></div>
+  <div id="eq-util" class="tab-panel"><div class="item-grid">
+    <div class="item-card reveal"><div class="item-icon">🧂</div><div><div class="item-name">Salt Canister</div><div class="item-type">Purchasable · Utility</div><div class="item-desc">Sprinkle salt piles in the ghost room. A ghost with Handprints evidence leaves a glowing UV footprint in salt — confirms evidence instantly. Also reveals movement.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">✝️</div><div><div class="item-name">Cross</div><div class="item-type">Purchasable · Survival</div><div class="item-desc">Placed near the ghost room entrance — prevents the ghost from initiating a hunt within its radius. Critical against Demons that hunt at full sanity.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🕯️</div><div><div class="item-name">Lighter</div><div class="item-type">Starter · Utility</div><div class="item-desc">Lights candles found around job sites. Lit candles slow your sanity drain significantly. Wisps will light candles themselves — watch for this behavior.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🏮</div><div><div class="item-name">Lantern</div><div class="item-type">Purchasable · Utility</div><div class="item-desc">Brighter and longer-range than a flashlight. Not electronic — will not malfunction near a hunting ghost. The safest light source for cautious players.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">⚡</div><div><div class="item-name">Energy Drink</div><div class="item-type">Purchasable · Survival</div><div class="item-desc">Restores sprint energy. Critical on large maps and during extended chases. Use just before sprinting for maximum distance.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">⌚</div><div><div class="item-name">Energy Watch</div><div class="item-type">Purchasable · Info</div><div class="item-desc">Displays your current sanity level at all times. Without it, you're guessing when hunts will begin. Highly recommended for understanding your real risk.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🫙</div><div><div class="item-name">Holy Oil</div><div class="item-type">Purchasable · Survival</div><div class="item-desc">Place at the ghost room doorway. Prevents certain ghosts (especially The Wisp) from initiating hunts through that entrance. Situationally powerful.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🔫</div><div><div class="item-name">Rock Salt Shotgun</div><div class="item-type">Purchasable · Combat</div><div class="item-desc">Fires rock salt to temporarily repel the ghost mid-hunt. Does not kill — buys you seconds to reach a closet. A last resort, not a strategy.</div></div></div>
+  </div></div>
+  <div id="eq-curse" class="tab-panel"><div class="item-grid">
+    <div class="item-card reveal"><div class="item-icon">🪬</div><div><div class="item-name">Umbra Board</div><div class="item-type">Cursed Object · Communication</div><div class="item-desc">Ask "What is your favorite room?" — the planchette spells out the ghost room name. High risk of triggering a hunt. Not available on Nightmare difficulty.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🪞</div><div><div class="item-name">Haunted Mirror</div><div class="item-type">Cursed Object · Navigation</div><div class="item-desc">Reflects a static image of the ghost room. Identify the room from the visual without entering. Safer than the Umbra Board for room location.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🎵</div><div><div class="item-name">Music Box</div><div class="item-type">Cursed Object · Detection</div><div class="item-desc">Wind it and walk through the map. The ghost hums along when you're near its room — louder as you approach. A gentle and relatively safe way to find the room.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🔮</div><div><div class="item-name">Summoning Circle</div><div class="item-type">Cursed Object · High Risk</div><div class="item-desc">Forces a ghost manifestation — perfect for photos and evidence. Triggers an immediate hunt when used. Only activate with a hiding spot planned in advance.</div></div></div>
+    <div class="item-card reveal"><div class="item-icon">🪄</div><div><div class="item-name">Fortune Teller</div><div class="item-type">Cursed Object · Information</div><div class="item-desc">Reveals a random piece of ghost information — its room, evidence, or behavior. Can give you a crucial early lead, but red herrings are possible.</div></div></div>
+  </div></div>
+</div>
+
+<div class="hr"></div>
+
+<!-- TIPS -->
+<div id="tips" class="fw-section">
+  <div class="fw-inner">
+    <div class="sec-eyebrow reveal">Survive Longer</div>
+    <h2 class="sec-title reveal">Tips & Strategies</h2>
+    <p class="sec-desc reveal">The difference between an experienced investigator and a dead one is almost always preparation and knowledge.</p>
+    <div class="tips-grid">
+      <div class="tip-card reveal"><div class="tip-num">I</div><div class="tip-category">🌡️ First Steps</div><div class="tip-title">Always Find the Ghost Room First</div><div class="tip-body">Start every job by scanning all rooms with the Thermometer. A reading below 0°C locates the ghost room. All other evidence gathering happens there — never skip this step.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">II</div><div class="tip-category">📓 Evidence</div><div class="tip-title">Trust Your Journal</div><div class="tip-body">Mark evidence as you find it and scratch out what you've ruled out. The journal narrows down ghost possibilities automatically — keep it updated in real time, not at the end.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">III</div><div class="tip-category">🙈 Before You Start</div><div class="tip-title">Map Your Hiding Spots Immediately</div><div class="tip-body">When you enter a map, locate every closet and locker before you start investigating. When a hunt begins you have seconds. Searching during a hunt is how hunters die.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">IV</div><div class="tip-category">🔦 During Hunts</div><div class="tip-title">Turn Off All Electronics When Hiding</div><div class="tip-body">A malfunctioning flashlight or Spirit Box broadcasts your location to the ghost. The moment you hear the hunt music, turn everything electronic off before hiding.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">V</div><div class="tip-category">🧂 Evidence</div><div class="tip-title">Salt Forces Handprints Every Time</div><div class="tip-body">Drop salt piles in the ghost room doorway. If the ghost has Handprints evidence and walks through salt, it leaves a UV-visible footprint 100% of the time. Reliable and fast.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">VI</div><div class="tip-category">🎙️ Caution</div><div class="tip-title">Be Careful With Spirit Box</div><div class="tip-body">The Ghoul hunts the moment you ask it a question via Spirit Box. If you have Freezing and Ghost Orb already, consider ruling out the Ghoul before using it at all.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">VII</div><div class="tip-category">📷 Money</div><div class="tip-title">Always Carry the Photo Camera</div><div class="tip-body">Ghost event and manifestation photos are your primary income. A clear photo of the ghost during a manifestation is the most valuable — aim for the ghost, not the aftermath.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">VIII</div><div class="tip-category">🕯️ Sanity</div><div class="tip-title">Light Every Candle You Find</div><div class="tip-body">Lit candles significantly slow sanity drain. Sweep the map and light them during safe periods. Lower sanity means more hunts — and some ghosts hunt regardless of sanity level.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">IX</div><div class="tip-category">👁️ Settings</div><div class="tip-title">Lower Graphics for Better Evidence Visibility</div><div class="tip-body">Ghost Orbs and Laser Grid evidence are dramatically clearer at Roblox Graphics Level 1. Go to Settings → Graphics Mode (Manual) and drop it all the way down.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">X</div><div class="tip-category">⏰ Overtime</div><div class="tip-title">Overtime Is Not Optional</div><div class="tip-body">When the timer hits zero, overtime begins and the ghost becomes aggressively dangerous. If you haven't identified yet, work fast and get out. Do not stay to farm extra photos.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">XI</div><div class="tip-category">👥 Teamwork</div><div class="tip-title">Assign Clear Roles</div><div class="tip-body">One hunter scans for the ghost room, one deploys cameras and the Spirit Book, one handles the Spirit Box. Three people doing the same thing is three people wasting time.</div></div>
+      <div class="tip-card reveal"><div class="tip-num">XII</div><div class="tip-category">🌿 Wither</div><div class="tip-title">Deploy the Flower Pot Early</div><div class="tip-body">Wither takes time to manifest, and the timer is random. Place the Flower Pot in the ghost room the moment you identify it. Waiting until later may mean never getting this evidence at all.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<!-- LORE -->
+<div id="lore" class="section">
+  <div class="sec-eyebrow reveal" style="justify-content:center">History & Lore</div>
+  <h2 class="sec-title reveal" style="text-align:center">The Mythology</h2>
+  <div class="ornament reveal">✦ ── ✦ ── ✦</div><br>
+  <div class="lore-body">
+    <div class="lore-block reveal">
+      <div class="lore-heading">Demonology Solutions</div>
+      <p class="lore-text">You work for a company called Demonology Solutions. The Boss — a mysterious figure who never accompanies you on jobs — issues your contracts and provides the tutorial. What the company's true purpose is, and how they know so much about the supernatural, is never explained.</p>
+      <p class="lore-text">Each investigation is simply called a "job." You are not a hero. You are a contractor. The money you earn determines what equipment you bring next time. Death is a real possibility — and The Boss has never once expressed concern about losing a hunter.</p>
+      <div class="lore-quote">"Use the tools at your disposal to hunt down and identify the evil spirits haunting your jobsite."<br>— The Boss</div>
+    </div>
+    <div class="lore-block reveal">
+      <div class="lore-heading">The Ghost Types & Their Origins</div>
+      <p class="lore-text">The entities in Demonology are drawn from real-world folklore, mythology, and legend. The Banshee is a death omen from Irish tradition, said to wail before someone dies. The Wendigo is a cannibalistic spirit from Algonquian folklore — born from starvation and desperation in the wilderness. The Aswang is a shapeshifting monster from Filipino mythology, one of the most feared creatures in its home culture.</p>
+      <p class="lore-text">Others come from Jewish tradition (the Dybbuk, a possessing spirit of a restless dead soul), Greek mythology (the Keres, spirits of violent and cruel death), and ancient legend (the Leviathan, a primordial sea beast of chaos). The Entity and the Nightmare are unique to the game's world — the most dangerous types, treated in the lore as things that exist outside normal classification.</p>
+    </div>
+    <div class="lore-block reveal">
+      <div class="lore-heading">Black Magic Academy (School)</div>
+      <p class="lore-text">The School job site's official name is "Black Magic Academy" — BMA. It appears abandoned, yet the structure is intact. Classrooms are set as though students were expected. Lockers line the hallways. The gymnasium still has its equipment in place.</p>
+      <p class="lore-text">No one at Demonology Solutions explains what happened at BMA, who attended it, or why it's now one of the most haunted locations in their catalog. The developer group is named "Blaqk Magic Blue" — a deliberate echo of the school's name, as if the creators have written themselves into the world.</p>
+    </div>
+    <div class="lore-block reveal">
+      <div class="lore-heading">Ghost Models vs Ghost Types</div>
+      <p class="lore-text">Regardless of what type of ghost haunts a location, its physical appearance is determined by a separate ghost model — not its type. Models include Abaddon (confirmed female, "The Angel of Death"), Biter (wearing a brown formal suit and tie), Dr. Ratched, Leech, Marrow, Mouthpiece, Rattle, and Watcher.</p>
+      <p class="lore-text">This means what you see is not what you're hunting. A Phantom could look like Biter. An Entity might manifest as Abaddon. The visual appearance is a mask. Only the evidence tells you the truth.</p>
+      <div class="lore-quote">"The ghost's appearance tells you nothing. The evidence tells you everything."</div>
+    </div>
+    <div class="lore-block reveal">
+      <div class="lore-heading">The Inescapable Prison</div>
+      <p class="lore-text">The Prison carries a sign at its entrance reading "Inescapable Prison." Unlike homes or a school, it was built to contain things. Long stone hallways, rows of cells, warden quarters, and staff areas suggest a serious facility. What caused the haunting — whether the ghost was once an inmate, a guard, or something drawn to the building's purpose — is left entirely to imagination.</p>
+    </div>
+    <div class="lore-block reveal">
+      <div class="lore-heading">The Asylum</div>
+      <p class="lore-text">Unlocked only at Level 20, the Asylum is the final and most feared location — a three-story abandoned psychiatric hospital. Cluttered, vandalized, and deeply unsettling. Whatever happened here was sudden enough that patients' belongings remain. Staff records have been disturbed. Isolation cells stand open.</p>
+      <p class="lore-text">The ghost that haunts the Asylum has had decades to learn its corridors. It knows the hiding spots. It knows where the lights fail. It has been waiting. And now, so are you.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Demonology 🕯️</div>
+  <p class="footer-tagline">A fan resource. Not affiliated with Blaqk Magic Blue or Roblox Corporation.</p>
+  <ul class="footer-links">
+    <li><a href="https://www.roblox.com/games/18199615050/Demonology" target="_blank">Play on Roblox</a></li>
+    <li><a href="https://demonology.fandom.com" target="_blank">Official Wiki</a></li>
+    <li><a href="https://discord.gg/demonology" target="_blank">Discord</a></li>
+    <li><a href="#ghosts">Ghosts</a></li>
+    <li><a href="#maps">Job Sites</a></li>
+    <li><a href="#items">Equipment</a></li>
+    <li><a href="#tips">Tips</a></li>
+    <li><a href="#lore">Lore</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 · Fan site · Demonology developed by Blaqk Magic Blue · AskForHeaven · All game content belongs to its creators.</p>
+</footer>
+
+<script>
+function switchTab(btn, id) {
+  const container = btn.closest('.section, .fw-inner');
+  container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  // re-trigger reveals inside the newly shown panel
+  document.getElementById(id).querySelectorAll('.reveal').forEach(el => {
+    if (!el.classList.contains('visible')) el.classList.add('visible');
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 55);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Subtle hero title flicker
+const title = document.querySelector('.hero-title');
+if (title) {
+  setInterval(() => {
+    if (Math.random() < 0.03) {
+      title.style.opacity = '0.87';
+      setTimeout(() => title.style.opacity = '1', 70);
+    }
+  }, 700);
+}
+</script>
+</body>
+</html>
